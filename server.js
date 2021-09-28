@@ -110,7 +110,7 @@ app.put('/patients',async(req,res)=>{
 
 // DELETE Patients
 app.delete('/patients', async(req, res) => {
-    const patientItems = await Patients.findOne({ ownerName: req.body.ownerName })
+    const patientItems = await Patients.findOne({ ownerName: req.body._id })
     const deleted = await patientItems.remove()
     .then(res.send("Delete successful"))
     .catch(err=>{
