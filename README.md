@@ -27,9 +27,13 @@ homeAddress: String,
 phoneNumber: String
 
 Setiap permintaan yang dapat dilakukan:
+
 POST '/queue' : API akan memasukkan data yang sesuai dengan skema ke dalam MongoDB. Dari skema, data 'date', 'ownerName', 'petName', 'petType', 'homeAddress', dan 'phoneNumber' adalah data-data yang wajib diisi.
+
 GET '/queue' : API akan mengembalikan list berisi semua data dalam _collection_ 'queues' dari MongoDB.
+
 PUT '/queue' : API akan mencari data dengan id yang sesuai dengan permintaan dan mengubah data tersebut sesuai isi permintaan.
+
 DELETE '/queue' : API akan mencari data dengan id yang sesuai dengan permintaan dan menghapus data tersebut dari MongoDB.
 
 
@@ -45,7 +49,11 @@ description: String,
 currentTreatments: [String]
 
 Setiap permintaan yang dapat dilakukan:
+
 POST '/patients' : API akan memasukkan data yang sesuai dengan skema ke dalam MongoDB. Dari skema, data 'ownerName', 'petName', 'petType', 'homeAddress', dan 'phoneNumber' adalah data-data yang wajib diisi.
+
 GET '/patients' : API akan mengembalikan list berisi semua data dalam _collection_ 'patients' dari MongoDB.
+
 PUT '/patients' : API akan mencari data dengan id yang sesuai dengan permintaan dan mengubah data tersebut sesuai isi permintaan.
+
 DELETE '/patients' : API akan mencari data dengan id yang sesuai dengan permintaan dan menghapus data tersebut dari MongoDB.
