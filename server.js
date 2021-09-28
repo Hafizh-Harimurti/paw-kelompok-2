@@ -9,7 +9,7 @@ const Queue = require('./models/Queue');
 const Patients = require('./models/Patients');
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
 
 mongoose.connect(url,{useNewUrlParser:true})
     .then(console.log('Connected to DB'))
@@ -30,7 +30,6 @@ app.post('/queue',(req,res)=>{
     var newQueue = new Queue({
         _id: new mongoose.Types.ObjectId(),
         date: req.body.date,
-        time: req.body.time,
         ownerName: req.body.ownerName,
         petName: req.body.petName,
         petType: req.body.petType,
@@ -38,8 +37,12 @@ app.post('/queue',(req,res)=>{
         phoneNumber: req.body.phoneNumber
     });
     newQueue.save()
-    .then(_id=>{
-        res.send(_id)
+    .then(result => {
+        if(result.name != "ValidationError"){
+            res.send("Create successful")
+        } else {
+            res.send(result)
+        };
     })
     .catch(err=>{
         res.send(err)
@@ -48,27 +51,22 @@ app.post('/queue',(req,res)=>{
 
 //PUT queue
 app.put('/queue', (req,res)=>{
-    console.log(req.body._id)
-    updates = req.body
+    updates = req.body;
     Queue.findOneAndUpdate({_id:req.body._id}, {$set: updates}, {new : true})
-        .then(updatedPatients=>{
-            res.send(updatedPatients)
-        })
+        .then(res.send("Update successful"))
         .catch(err=>{
             res.send(err)
-        })
-})
+        });
+});
 
 //DELETE queue
 app.delete('/queue', (req,res)=>{
-    console.log(req.body._id)
-    Queue.findOneAndDelete({ownerName:req.body._id})
+    Queue.findOneAndDelete({_id:req.body._id})
         .then(res.send("Delete successful"))
         .catch(err=>{
             res.send(err)
-        })
-})
-
+        });
+});
 
 //GET patient
 app.get('/patients',async(req,res)=>{
@@ -90,30 +88,34 @@ app.post('/patients', (req,res)=>{
         currentTreatments: req.body.currentTreatments
     });
     newPatients.save()
-        .then(item => {
-            res.send("Create Sucessfull")
+        .then(result => {
+            if(result.name != "ValidationError"){
+                res.send("Create successful")
+            } else {
+                res.send(result)
+            };
         })
         .catch(err =>{
             res.send(err)
         });
-})
+});
 
 // PUT Patients
 app.put('/patients',async(req,res)=>{
-    await Patients.findOneAndUpdate({ownerName: req.body._id},{$set: req.body})
+    await Patients.findOneAndUpdate({_id: req.body._id},{$set: req.body})
     .then(res.send("Update successful"))
     .catch(err=>{
         res.send(err)
-    })
+    });
 });
 
 
 // DELETE Patients
 app.delete('/patients', async(req, res) => {
-    const patientItems = await Patients.findOne({ ownerName: req.body._id })
+    const patientItems = await Patients.findOne({ _id: req.body._id });
     const deleted = await patientItems.remove()
     .then(res.send("Delete successful"))
     .catch(err=>{
         res.send(err)
-    })
-})
+    });
+});
