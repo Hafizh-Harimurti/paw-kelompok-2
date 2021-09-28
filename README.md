@@ -4,8 +4,8 @@ Tugas Pengembangan Aplikasi Web untuk fungsi CRUD
 
 *description*
 
-API yang ada di dokter hewan, terdiri dari 2 fungsi CRUD yaitu Patient dan Queue. Patient terdiri dari informasi data ownerName, petName, petType, homeAddress, phoneNumber, and description.
-Sedangkan bagian queue terdiri dari date, time, ownerName, petName, petType, homeAddress, dan phoneNumber. Pasien yang berobat ke dokter hewan dapat melihat antrean mereka sudah berada pada urutan keberapa, kemudian dokter hewan dapat mengedit pasien yang sudah selesai dan juga melihat siapa saja yang belum diperiksa.
+API yang ada di dokter hewan, terdiri dari 2 fungsi CRUD yaitu Patients dan Queue. Patients terdiri dari informasi data ownerName, petName, petType, homeAddress, phoneNumber, description, dan currentTreatments.
+Sedangkan bagian queue terdiri dari date, ownerName, petName, petType, homeAddress, dan phoneNumber. Pemilik hewan peliharaan yang membawa hewannya untuk berobat ke dokter hewan dapat melihat antrean mereka sudah berada pada urutan keberapa, kemudian dokter hewan dapat mengedit pasien yang sudah selesai dan juga melihat siapa saja yang belum diperiksa.
 
 *Anggota Kelompok*:
 - Hafizh Aradhana Harimurti (19/444053/TK/49249)
