@@ -20,7 +20,8 @@ app.listen(3000);
 
 //GET queue
 app.get('/queue',async(req,res)=>{
-    const queueItems = await Queue.find();
+    const queueItems = await Queue.find()
+        .catch(err => res.send(err));
     res.send(queueItems);
 });
 
@@ -50,8 +51,9 @@ app.delete('/queue', (req,res)=>{
 
 
 //GET patient
-app.get('/patient',async(req,res)=>{
-    const patientItems = await Patients.find();
+app.get('/patients',async(req,res)=>{
+    const patientItems = await Patients.find()
+        .catch(err => res.send(err));
     res.send(patientItems);
 });
 
@@ -72,7 +74,7 @@ app.post('/patients', (req,res)=>{
 
 
 // DELETE Patients
-app.delete('/patients', (req, res) => {
+app.delete('/patients', async(req, res) => {
     const patientItems = await Patients.findOne({ ownerName: req.body.ownerName })
     const deleted = await patientItems.remove()
     .then(res.send("Delete successful"))
