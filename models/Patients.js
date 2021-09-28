@@ -2,13 +2,28 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const patients = new Schema({
-    ownerName: String,
-    petName: String,
-    petType: String,
-    homeAddress: String,
-    phoneNumber: String,
+    ownerName: {
+        type: String,
+        required: true
+    },
+    petName: {
+        type: String,
+        required: true
+    },
+    petType: {
+        type: String,
+        required: true
+    },
+    homeAddress: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
     description: String,
-    currentTreatments: Array
+    currentTreatments: [String]
 },{
     collection : 'patients'
 });

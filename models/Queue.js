@@ -2,13 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const queueItems = new Schema({
-    date: Date,
-    time: String,
-    ownerName: String,
-    petName: String,
-    petType: String,
-    homeAddress: String,
-    phoneNumber: String
+    date: {
+        type: Date,
+        required: true
+    },
+    ownerName: {
+        type: String,
+        required: true
+    },
+    petName: {
+        type: String,
+        required: true
+    },
+    petType: {
+        type: String,
+        required: true
+    },
+    homeAddress: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    }
 },{
     collection : 'queues'
 });

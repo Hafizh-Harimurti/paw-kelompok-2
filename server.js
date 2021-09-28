@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(cors())
 
 mongoose.connect(url,{useNewUrlParser:true})
-    .then(res => console.log('Connected to DB'))
+    .then(console.log('Connected to DB'))
     .catch(err => console.log(err));
 
 //Create localhost:3000
@@ -26,19 +26,31 @@ app.get('/queue',async(req,res)=>{
 });
 
 //POST queue
-app.post('/queue',async(req,res)=>{
-    var newQueue = new Queue(req.body)
-    await newQueue.save()
+app.post('/queue',(req,res)=>{
+    var newQueue = new Queue({
+        _id: new mongoose.Types.ObjectId(),
+        date: req.body.date,
+        time: req.body.time,
+        ownerName: req.body.ownerName,
+        petName: req.body.petName,
+        petType: req.body.petType,
+        homeAddress: req.body.homeAddress,
+        phoneNumber: req.body.phoneNumber
+    });
+    newQueue.save()
     .then(_id=>{
         res.send(_id)
     })
+    .catch(err=>{
+        res.send(err)
+    });
 });
 
 //PUT queue
 app.put('/queue', (req,res)=>{
     console.log(req.body._id)
     updates = req.body
-    Queue.findOneAndUpdate({_id:req.body._id}, updates, {new : true})
+    Queue.findOneAndUpdate({_id:req.body._id}, {$set: updates}, {new : true})
         .then(updatedPatients=>{
             res.send(updatedPatients)
         })
@@ -67,7 +79,16 @@ app.get('/patients',async(req,res)=>{
 
 // POST Patients
 app.post('/patients', (req,res)=>{
-    var newPatients = new Patients(req.body)
+    var newPatients = new Patients({
+        _id: new mongoose.Types.ObjectId(),
+        ownerName: req.body.ownerName,
+        petName: req.body.petName,
+        petType: req.body.petType,
+        homeAddress: req.body.homeAddress,
+        phoneNumber: req.body.phoneNumber,
+        description: req.body.description,
+        currentTreatments: req.body.currentTreatments
+    });
     newPatients.save()
         .then(item => {
             res.send(item)
@@ -79,8 +100,7 @@ app.post('/patients', (req,res)=>{
 
 // PUT Patients
 app.put('/patients',async(req,res)=>{
-    const patientItems = await Patients.findOne({ownerName: req.body.ownerName})
-    const update = await patientItems.update()
+    await Patients.findOneAndUpdate({ownerName: req.body.ownerName},{$set: req.body})
     .then(res.send("Update successful"))
     .catch(err=>{
         res.send(err)
