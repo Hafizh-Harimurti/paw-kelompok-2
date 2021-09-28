@@ -91,7 +91,7 @@ app.post('/patients', (req,res)=>{
     });
     newPatients.save()
         .then(item => {
-            res.send(item)
+            res.send("Create Sucessfull")
         })
         .catch(err =>{
             res.send(err)
