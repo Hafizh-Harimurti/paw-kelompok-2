@@ -61,8 +61,8 @@ app.put('/queue', (req,res)=>{
 
 //DELETE queue
 app.delete('/queue', (req,res)=>{
-    console.log(req.body.ownerName)
-    Queue.findOneAndDelete({ownerName:req.body.ownerName})
+    console.log(req.body._id)
+    Queue.findOneAndDelete({ownerName:req.body._id})
         .then(res.send("Delete successful"))
         .catch(err=>{
             res.send(err)
@@ -100,7 +100,7 @@ app.post('/patients', (req,res)=>{
 
 // PUT Patients
 app.put('/patients',async(req,res)=>{
-    await Patients.findOneAndUpdate({ownerName: req.body.ownerName},{$set: req.body})
+    await Patients.findOneAndUpdate({ownerName: req.body._id},{$set: req.body})
     .then(res.send("Update successful"))
     .catch(err=>{
         res.send(err)
