@@ -58,7 +58,7 @@ const Patient = () => {
                         })}
                     </ul>
                 <div className="addPatient">
-                    <FormControl fullWidth sx={{ m: 1, width: '22.7ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
                         <InputLabel htmlFor="nama">Nama</InputLabel>
                         <OutlinedInput
                             id="nama"
@@ -67,7 +67,7 @@ const Patient = () => {
                             onChange={handleChange('name')}
                         />
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '11ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
                         <InputLabel htmlFor="petName">Your Pet Name</InputLabel>
                         <OutlinedInput
                             id="petName"
@@ -75,7 +75,7 @@ const Patient = () => {
                             onChange={handleChange('petName')}
                         />
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '11ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
                         <TextField
                             id="petType"
                             select
@@ -90,7 +90,7 @@ const Patient = () => {
                             ))}
                             </TextField>
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '22.7ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
                         <InputLabel htmlFor="adsress">Address</InputLabel>
                         <OutlinedInput
                             id="address"
@@ -98,7 +98,7 @@ const Patient = () => {
                             onChange={handleChange('address')}
                         />
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '22.7ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
                         <InputLabel htmlFor="adsress">Phone Number</InputLabel>
                         <OutlinedInput
                             id="phone"
@@ -106,7 +106,7 @@ const Patient = () => {
                             onChange={handleChange('phone')}
                         />
                     </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '22.7ch' }}>
+                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
                         <InputLabel htmlFor="desc">Description</InputLabel>
                         <OutlinedInput
                             id="desc"
