@@ -1,9 +1,8 @@
 import React from 'react';
 
-export const PatientRow = (props) =>{
+export default function PatientRow(props){
     return (
         <tr>
-            <td id="_id" style="display:none">{props._id}</td>
             <td id="ownerName">{props.ownerName}</td>
             <td id="petName">{props.petName}</td>
             <td id="petType">{props.petType}</td>
