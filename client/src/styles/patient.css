@@ -1,0 +1,52 @@
+.patient{
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.patientContainer{
+    display: flex;
+}
+
+
+.patientListBox{
+    width: 40%;
+    list-style: none;
+    display: block;
+    margin: 0;
+}
+.patientList{
+    display: flex;
+    background-color: #00cc99;
+    padding: 10px 30px;
+    border-radius: 15px;
+    color: #fafafa;
+}
+.patientName{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.pet{
+    display: flex;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.petDetail{
+    margin-right: 5px;
+}
+.patientInfo{
+    width: 80%;
+}
+.buttonArea{
+    display: flex;
+    align-items: center;
+    float: right;
+}
+
+.addPatient{
+    width: 45%;
+    margin-left: 50px;
+}
