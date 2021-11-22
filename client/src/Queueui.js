@@ -1,36 +1,65 @@
-import React from 'react'
+import React, {useState} from 'react'
 import QueueTable from './components/QueueTable'
-
+import QueueAdd from './components/QueueAdd'
+import {Box,Button} from '@material-ui/core'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import './Queueui.css'
 
 function Queueui() {
 
+    const theme = createMuiTheme({
+        typography: {
+          fontFamily: [
+            'Poppins',
+            'sans-serif',
+          ].join(','),
+        },});
+
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+      setModal(!modal);
+    };
+  
+    if(modal) {
+      document.body.classList.add('active-modal')
+    } else {
+      document.body.classList.remove('active-modal')
+    }
+
         return (
             <div class="main">
-                <h1>Antri Dokter Hewan</h1>
+                <h1>Queue</h1>
                 <div class="container">
-                    <div class="Table">
+    
+                    <div class="btn-modal">
+                    <ThemeProvider theme={theme}>
+                        <Box textAlign='center'>
+                            <Button variant="contained" color="secondary" onClick={toggleModal}
+                            style={{backgroundColor: '#00CC99', color: '#FFFFFF', textTransform: 'none'}}>
+                                Add Item
+                                </Button>
+                        </Box>
+                    </ThemeProvider>    
+                    </div>
+
+                    {modal && (
+                        <div className="modal">
+                        <div onClick={toggleModal} className="overlay"></div>
+                        <div className="modal-content">
+                            <QueueAdd/>
+                        </div>
+                        </div>
+                    )}
+
+                    <div class="table">
                         <QueueTable />
                     </div>
-    
-                    <div class="container-form">
-                        <form>
-                            <label>Tanggal: <input type="date"/></label>
-                            <label>Nama Pemilik: <input type="text"/></label>
-                            <label>Nama Hewan: <input type="text"/></label>
-                            <label>Jenis Hewan: <input type="text"/></label>
-                            <label>Alamat Rumah: <input type="text"/></label>
-                            <label>Nomor Telepon: <input type="text"/></label>
-                        
-                            <button onClick="" class="button-addstate">Tambahkan</button>
-                            <button onClick="" class="button-editstate">Edit</button>
-                            <button onClick="" class="button-editstate">Cancel</button>
-                        </form>
-                    </div>
+
                 </div>
                 
             </div>
         )
     }
     
-
 export default Queueui
