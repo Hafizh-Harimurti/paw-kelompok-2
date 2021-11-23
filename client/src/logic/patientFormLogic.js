@@ -1,25 +1,22 @@
-import React from 'react'
+import { useState } from 'react'
 import Express from 'express'
 
-import { getPatients, postPatient, putPatient } from '../adapters/patients'
+import { putPatient } from '../adapters/patients'
 import { getOnePatient } from './patientLogic'
 
-const [currentMode, setCurrentMode] = useState("add")
 const [medications, setMedications] = useState([])
 const [patient, setPatient] = useState({})
 
 const app = Express()
 
-export const patientFormStartup = () => {
-    setPatient(getOnePatient)
-}
+setPatient(getOnePatient)
 
 export const addMedication = (medication) => {
     if(medications.includes(medication)){
         window.alert("Medication already exists!")
     } else {
-        newMedications = medications.concat(medication)
-        setMedications(newMedication)
+        const newMedications = medications.concat(medication)
+        setMedications(newMedications)
     }
 }
 
@@ -27,7 +24,7 @@ export const removeMedication = (removedMedication) => {
     if(!medications.includes(removedMedication)){
         window.alert("Medication doesn't exists!") 
     } else {
-        newMedications = medications.splice(medications.indexOf(removedMedication))
+        const newMedications = medications.splice(medications.indexOf(removedMedication))
         setMedications(newMedications)
     }
 }
@@ -40,7 +37,7 @@ export const getSpecificPatient = () =>{
     return patient
 }
 
-export const submitPatient = (patient) => {
+export const submitPatient = (patient, medications) => {
     if(
         patient.ownerName === ""||
         patient.petName === "" ||
@@ -50,7 +47,16 @@ export const submitPatient = (patient) => {
     ){
         window.alert("Please fill the required information!")
     } else {
-        putPatient(patient)
+        const editPatient = {
+            ownerName: patient.ownerName,
+            petName: patient.petName,
+            petType: patient.petType,
+            phoneNumber: patient.phoneNumber,
+            homeAddress: patient.homeAddress,
+            description: patient.description,
+            currentTreatments: medications
+        }
+        putPatient(editPatient)
     }
     app.get('/patient', function(req,res){
         res.redirect('/')

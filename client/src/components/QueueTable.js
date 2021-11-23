@@ -14,7 +14,7 @@ function QueueTable() {
   }
   
   function removeQueue(index){
-    deleteQueue(queues.index)
+    deleteQueue(queues[index])
   }
 
   return (

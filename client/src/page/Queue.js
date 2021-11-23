@@ -3,7 +3,6 @@ import QueueTable from '../components/QueueTable'
 import Queue from '../components/QueueAdd'
 import {Box,Button} from '@material-ui/core'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import 'client/src/styles/queue.css'
 
 function Queueui() {
 
@@ -28,11 +27,11 @@ function Queueui() {
     }
 
         return (
-            <div class="main">
+            <div className="main">
                 <h1>Queue</h1>
-                <div class="container">
+                <div className="container">
     
-                    <div class="btn-modal">
+                    <div className="btn-modal">
                     <ThemeProvider theme={theme}>
                         <Box textAlign='center'>
                             <Button variant="contained" color="secondary" onClick={toggleModal}
@@ -52,7 +51,7 @@ function Queueui() {
                         </div>
                     )}
 
-                    <div class="table">
+                    <div className="table">
                         <QueueTable />
                     </div>
 

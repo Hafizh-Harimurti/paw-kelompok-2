@@ -7,7 +7,6 @@ export const getPatients = () => {
         .then(response=>{
             response.data
         })
-        .catch(err)
     console.log(res)
     return res
 };
@@ -17,7 +16,6 @@ export const postPatient = (patientData) => {
         .then(response=>{
             response.data
         })
-        .catch(err)
     console.log(res)
     return res
 };
@@ -27,7 +25,6 @@ export const putPatient = (patientData) => {
         .then(response=>{
             response.data
         })
-        .catch(err)
     console.log(res)
     return res
 };
@@ -37,45 +34,40 @@ export const deletePatient = (patientData) => {
         .then(response=>{
             response.data
         })
-        .catch(err)
     console.log(res)
     return res
 };
 
 const queueApiPath = "https://localhost:3000/api/queue"
 
-export const getQueue = (queueData) => {
+export const getQueue = () => {
     let res = Axios.get(queueApiPath)
     .then(response=>{
         response.data
     })
-    .catch(err)
     return res
 };
 
-export const postQueue = (queuetData) => {
+export const postQueue = (queueData) => {
     let res = Axios.post(queueApiPath, queueData)
         .then(response=>{
             response.data
         })
-        .catch(err)
     return res
 };
 
-export const putQueue = (queuetData) => {
+export const putQueue = (queueData) => {
     let res = Axios.put(queueApiPath, queueData)
         .then(response=>{
             response.data
         })
-        .catch(err)
     return res
 };
-export const deleteQueue = (queuetData) => {
+export const deleteQueue = (queueData) => {
     let res = Axios.delete(queueApiPath, queueData)
         .then(response=>{
             response.data
         })
-        .catch(err)
     return res
     
 };
