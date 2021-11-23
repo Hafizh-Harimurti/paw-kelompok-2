@@ -1,24 +1,27 @@
 import React, {useState} from 'react'
 import '../styles/patient.css'
-
+import { getPatients, postPatients, putPatients, deletePatients } from '../adapters/patients';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import PatientRow from '../components/PatientRow';
 
 const petType = [{type: 'cat'}, {type: 'dog'}, {type: 'rabbit'}]
 
 const Patient = () => {
-    const Patients = [{id:'1', name:'John', petName:'Ben', petType:'Dog'}]
+    const Patients = getPatients()
     const [values, setValues] = React.useState({
-        name: '',
+        _id: '',
+        ownerName: '',
         petName: '',
         petType: '',
-        address: '',
-        phone: '',
-        desc: ''
+        homeAddress: '',
+        phoneNumber: '',
+        description: '',
+        medications: ''
     });
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -29,32 +32,13 @@ const Patient = () => {
         console.log(values)
     }
 
-    function deletePatient(e, id){
-        e.preventDefault()
-        console.log(id)
-    }
-
     return(
         <div className="patient">
             <div className="patientTitle">Patient</div>
             <div className="patientContainer">
                     <ul className="patientListBox">
                         {Patients.map(patient=>{
-                            return(
-                                <li className="patientList">
-                                    <div className="patientInfo">
-                                        <div className="patientName">{patient.name}</div>
-                                        <div className="pet">
-                                            <div className="petDetail">{patient.petName}</div>
-                                            <div className="petDetail">({patient.petType})</div>
-                                        </div>
-                                    </div>
-                                    <div className="buttonArea">
-                                        <button onClick={e=>deletePatient(e,patient.id)}>delete</button>
-                                        <button>edit</button>
-                                    </div>
-                                </li>
-                            )
+                            <PatientRow key={patient.id} patient={patient}/>
                         })}
                     </ul>
                 <div className="addPatient">
@@ -91,7 +75,7 @@ const Patient = () => {
                             </TextField>
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="adsress">Address</InputLabel>
+                        <InputLabel htmlFor="address">Address</InputLabel>
                         <OutlinedInput
                             id="address"
                             label="Address"
@@ -99,7 +83,7 @@ const Patient = () => {
                         />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="adsress">Phone Number</InputLabel>
+                        <InputLabel htmlFor="phone">Phone Number</InputLabel>
                         <OutlinedInput
                             id="phone"
                             label="Phone Number"

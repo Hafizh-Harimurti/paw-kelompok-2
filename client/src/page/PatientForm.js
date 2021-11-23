@@ -1,53 +1,94 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import MedicationRow from '../components/MedicationRow';
+import { addMedication, removeMedication} from '../logic/patientFormLogic';
 
 const PatientForm = () => {
+
+
+    const [newPatientsInfo, setNewPatientsInfo] = useState({})
+    const [newMedication, setNewMedication] = useState("")
+    const [buttonPressed, setButtonPressed] = useState("")
+
+    const handlePatientChange = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        setNewPatientsInfo(values => ({...values, [name]:value}))
+    }
+
+    const handleMedicationChange = (event) => {
+        const name = event.target.name
+        const value = event.target.value
+        setNewMedication(values => ({...values, [name]:value}))
+    }
+
+    const handlePatientSubmit = (event) => {
+
+    }
+
+    const handleMedicationsSubmit = (event) => {
+        event.preventDefault()
+        if(buttonPressed === "submitMedication"){
+            addMedication(newMedication)
+        } else if(buttonPressed === "deleteMedication") {
+            removeMedication(newMedication)
+        }
+
+
+    }
+
     return(
         <div className="container">
-    <div className="app-wrapper">
-        <div>
-            <h2 className="title">Informasi Pasien</h2>
-    </div>
-    <form className="form-wrapper">
-        <div className="patientName">
-        <label className="label">Nama Pemilik : </label>
-        <input className="input" type="text" />
+            <div className="app-wrapper">
+                <div>
+                    <h2 className="title">Informasi Pasien</h2>
+                </div>
+                <form className="form-wrapper" type="submit" onSubmit={handlePatientSubmit}>
+                    <div className="ownerName">
+                        <label className="label">Nama Pemilik : </label>
+                        <input className="input" name="ownerName" type="text" value={newPatientsInfo.ownerName || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <div className="petName">
+                        <label className="label">Nama Hewan : </label>
+                        <input className="input" name="petName" type="text" value={newPatientsInfo.petName || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <div className="petType">
+                        <label className="label">Nama Hewan : </label>
+                        <input className="input" name="petName" type="text" value={newPatientsInfo.petName || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <div className="homeAddress">
+                        <label className="label">Alamat : </label>
+                        <input className="input" name="homeAddress" type="text" value={newPatientsInfo.homeAddress || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <div className="phoneNumber">
+                        <label className="label">No. Telepon : </label>
+                        <input className="input" name="phoneNumber" type="text" value={newPatientsInfo.phoneNumber || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <div className="description">
+                        <label className="label">Deskripsi : </label>
+                        <input className="input2" name="description" type="text" value={newPatientsInfo.description || "-"} onChange={handlePatientChange}/>
+                    </div>
+                    <form className="pengobatan" onSubmit={handleMedicationsSubmit}>
+                        <div className="treatment">
+                            <label className="label">Pengobatan : </label>
+                            <input className="input3" type="text" value={newMedication || "-"} onChange={handleMedicationChange}/>
+                        </div>
+                        <div className="list" id="medicationsList">
+                            <label className="label">Daftar Pengobatan : </label>
+                            <ul>
+                                {getMedication().map((medication) => {
+                                    <MedicationRow medication={medication}/>
+                                })}
+                            </ul>
+                        </div>
+                        <button name="submitMedication" className="submit" type="submit" onClick={setButtonPressed(this.name)}>Tambah</button>
+                        <button name="deleteMedication" className="delete" type="submit" onClick={setButtonPressed(this.name)}>Hapus</button>
+                    </form>
+                    <button name="submitPatient" className="submitall" onClick={setButtonPressed(this.name)}>Tambah</button>
+                    <button name="deletePatient" className="deleteall" onClick={setButtonPressed(this.name)}>Hapus</button>
+                </form>
+            </div>
         </div>
-        <div className="petName">
-        <label className="label">Nama Hewan : </label>
-        <input className="input" type="petName" />
-        </div>
-        <div className="homeAddress">
-        <label className="label">Alamat : </label>
-        <input className="input" type="homeAddress" />
-        </div>
-        <div className="phoneNumber">
-        <label className="label">No. Telepon : </label>
-        <input className="input" type="phoneNumber" />
-        </div>
-        <div className="description">
-        <label className="label">Deskripsi : </label>
-        <input className="input2" type="description" />
-        </div>
-        <div className="pengobatan">
-        <div className="treatment">
-        <label className="label">Pengobatan : </label>
-        <input className="input3" type="treatment" />
-        </div>
-        <div className="list">
-        <label className="label">Daftar Pengobatan : </label>
-        <ul>
-
-        </ul>
-        </div>
-        <button onClick className="submit">Tambah</button>
-        <button onClick className="delete">Hapus</button>
-        </div>
-        <button onClick className="submitall">Tambah</button>
-        <button onClick className="deleteall">Hapus</button>
-        
-    </form>
-    </div>
-    </div>
     ); 
 };
 

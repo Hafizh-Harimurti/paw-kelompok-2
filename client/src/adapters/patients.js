@@ -8,6 +8,7 @@ export const getPatients = () => {
             response.data
         })
         .catch(err)
+    console.log(res)
     return res
 };
 
@@ -17,6 +18,7 @@ export const postPatient = (patientData) => {
             response.data
         })
         .catch(err)
+    console.log(res)
     return res
 };
 
@@ -26,6 +28,7 @@ export const putPatient = (patientData) => {
             response.data
         })
         .catch(err)
+    console.log(res)
     return res
 };
 
@@ -35,5 +38,6 @@ export const deletePatient = (patientData) => {
             response.data
         })
         .catch(err)
+    console.log(res)
     return res
 };
