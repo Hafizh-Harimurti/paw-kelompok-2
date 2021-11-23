@@ -11,4 +11,4 @@ export default function PatientRow(props){
             <td id="phoneNumber">{props.phoneNumber}</td>
         </tr>
     );
-}
+} 
