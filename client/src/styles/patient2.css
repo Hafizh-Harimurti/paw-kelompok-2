@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: linear-gradient(135deg, #850c62, #f80759);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-wrapper {
+  background-color: #fff;
+  min-width: 350px;
+  min-height: 650px;
+  padding: 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.title {
+  color: #f80759;
+  text-align: center;
+  margin: 20px 0px 40px 0px;
+}
+
+.patientName
+.petName
+.homeAddress
+.phoneNumber
+.description
+{
+  margin: 10px;
+  margin-bottom: 5px;
+  color: #969292;
+  font-size: 16px;
+}
+
+.treatment
+.list {
+    margin: 10px;
+    margin-top: 20px;
+    color: #969292;
+    font-size: 16px;
+    margin-bottom: 100px;
+}
+
+.pengobatan
+{
+  border-top-style: 10px solid silver;
+  border-left-style: 10px solid silver;
+  border-right-style: 10px solid silver;
+  border-bottom-style: 10px solid silver;
+}
+
+.input {
+  height: 20px;
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+  border-top-style: 2px solid black;
+  border-left-style: 2px solid black;
+  border-right-style: 2px solid black;
+  border-bottom-style: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.input2 {
+  height: 40px;
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+  border-top-style: 2px solid black;
+  border-left-style: 2px solid black;
+  border-right-style: 2px solid black;
+  border-bottom-style: 2px solid black;
+  margin-bottom: 40px;
+}
+
+.input3 {
+  height: 20px;
+  font-size: 15px;
+  outline: none;
+  width: 75%;
+  border-top-style:  none;
+  border-left-style:  none;
+  border-right-style:  none;
+  border-bottom-style: 2px solid black;
+  margin-bottom: 40px;
+}
+
+.error {
+  color: red;
+}
+
+.submit {
+  display: flex;
+  text-transform: lowercase;
+  float: right;
+  position: relative;
+  bottom: 105px;
+  font-size: 12px;
+  border-radius: 10px;
+  color: white;
+  padding: 7px 15px;
+  background:#f80759;
+  margin: auto;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.delete {
+  display: flex;
+  text-transform: lowercase;
+  float: right;
+  position: relative;
+  bottom: 175px;
+  left: 67px;
+  font-size: 12px;
+  border-radius: 10px;
+  color: white;
+  padding: 7px 15px;
+  background: #f80759;
+  margin: auto;
+  margin-top: 100px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.submitall {
+  display: flex;
+  text-transform: uppercase;
+  float: right;
+  position: relative;
+  top: 120px;
+  right: 30px;
+  font-size: 15px;
+  border-radius: 20px;
+  color: white;
+  padding: 7px 15px;
+  background: linear-gradient(to left, #ab1dcf, #f80759);
+  margin: auto;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.deleteall {
+  display: flex;
+  text-transform: uppercase;
+  float: right;
+  position: relative;
+  bottom: 10px;
+  left: 95px;
+  font-size: 15px;
+  border-radius: 20px;
+  color: white;
+  padding: 7px 15px;
+  background: linear-gradient(to left, #ab1dcf, #f80759);
+  margin: auto;
+  margin-top: 100px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+.form-success {
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  min-width: 370px;
+  color: #f80759;
+}
