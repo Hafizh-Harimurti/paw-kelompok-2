@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 
 import Patient from './page/Patient';
-import Queueui from './Queueui';
+import Queueui from './page/Queue';
 
 function App(){
   return (
