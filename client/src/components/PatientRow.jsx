@@ -1,10 +1,13 @@
 import React from 'react';
 
 import '../styles/patient.css'
-import { getPatients, postPatients, putPatients, deletePatients } from '../adapters/patients';
+import { deletePatients } from '../adapters/patients';
 
 export default function PatientRow(props){
     patient = props.patient
+    function removePatient(patient){
+        deletePatient(patient)
+    }
     return (
         <li className="patientList">
             <div className="patientInfo">
@@ -15,7 +18,7 @@ export default function PatientRow(props){
                 </div>
             </div>
             <div className="buttonArea">
-                <button onClick={deletePatients(patient)}>delete</button>
+                <button onClick={removePatient(patient)}>delete</button>
                 <button>edit</button>
             </div>
         </li>
