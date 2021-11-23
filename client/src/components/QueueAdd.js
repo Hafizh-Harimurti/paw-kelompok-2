@@ -6,12 +6,12 @@ import React, { useState } from 'react';
 function QueueAdd( {queueAdd, error} ) {
     
     const [queuedetails, setqueueDetails] = React.useState({
-        ownername: "", 
-        checkdate: "", 
-        petname: "", 
-        pettype: "", 
-        homeaddress: "", 
-        phonenumber: ""});
+        ownerName: "", 
+        checkDate: "", 
+        petName: "", 
+        petType: "", 
+        homeAddress: "", 
+        phoneNumber: ""});
 
         const submitHandler = e => {
             e.preventDefault();
@@ -39,35 +39,35 @@ function QueueAdd( {queueAdd, error} ) {
                     <form onSubmit={submitHandler}>
                     <Grid container spacing={1}>
                         <Grid item xs={12}>
-                        <TextField id="checkdate" name="checkdate"
+                        <TextField id="checkDate" name="checkDate"
                         InputLabelProps={{shrink: true,}}
                         placeholder="Date" label="Date" variant="standard" fullWidth required type="date" 
-                        onChange= {e=> setqueueDetails({...queuedetails, checkdate: e.target.value})} value={queuedetails.checkdate} />
+                        onChange= {e=> setqueueDetails({...queuedetails, checkDate: e.target.value})} value={queuedetails.checkDate} />
                         </Grid>
 
                         <Grid item xs={12}>
-                        <TextField id="ownername" name="ownername" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
-                        onChange= {e=> setqueueDetails({...queuedetails, ownername: e.target.value})} value={queuedetails.ownername} fullWidth required  />
+                        <TextField id="ownerName" name="ownerName" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
+                        onChange= {e=> setqueueDetails({...queuedetails, ownerName: e.target.value})} value={queuedetails.ownerName} fullWidth required  />
                         </Grid>
 
                         <Grid item xs={12}>
-                        <TextField id="petname" name="petname" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
-                        onChange= {e=> setqueueDetails({...queuedetails, petname: e.target.value})} value={queuedetails.petname} fullWidth required />
+                        <TextField id="petName" name="petName" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
+                        onChange= {e=> setqueueDetails({...queuedetails, petName: e.target.value})} value={queuedetails.petName} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
-                        <TextField id="pettype" name="pettype" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
-                        onChange= {e=> setqueueDetails({...queuedetails, pettype: e.target.value})} value={queuedetails.pettype} fullWidth required />
+                        <TextField id="petType" name="petType" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
+                        onChange= {e=> setqueueDetails({...queuedetails, petType: e.target.value})} value={queuedetails.petType} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
-                        <TextField id="homeadress" name="homeadress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
-                        onChange= {e=> setqueueDetails({...queuedetails, homeaddress: e.target.value})} value={queuedetails.homeaddress} fullWidth required />
+                        <TextField id="homeAdress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
+                        onChange= {e=> setqueueDetails({...queuedetails, homeAddress: e.target.value})} value={queuedetails.homeAddress} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
-                        <TextField id="phonenumber" name="phonenumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
-                        onChange= {e=> setqueueDetails({...queuedetails, phonenumber: e.target.value})} value={queuedetails.phonenumber} fullWidth required />
+                        <TextField id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
+                        onChange= {e=> setqueueDetails({...queuedetails, phoneNumber: e.target.value})} value={queuedetails.phoneNumber} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
