@@ -34,7 +34,8 @@ function QueueAdd( {queueAdd, error} ) {
                 <CardContent>
                 <Typography gutterBottom variant="h5">
                     Add Queue
-                </Typography> 
+                </Typography>  
+                
 
                     <form onSubmit={submitHandler}>
                     <Grid container spacing={1}>
