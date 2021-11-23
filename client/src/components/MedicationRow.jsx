@@ -1,11 +1,10 @@
 import React from 'react'
 
-import patientFormLogic from '../logic/patientFormLogic'
-
 export const MedicationRow = (props) => {
+    const medication = props.medication
     return(
         <li>
-            props.medication
+            {medication}
         </li>
     )
 }

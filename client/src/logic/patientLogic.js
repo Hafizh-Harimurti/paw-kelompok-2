@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import Express from 'express'
 
-import { getPatients, postPatient, deletePatient } from '../adapters/patients';
-import { useSearchParams } from 'react-router-dom';
+import { getPatients, postPatient } from '../adapters/patients';
 
 const app = Express()
 
@@ -29,5 +28,5 @@ export const getOnePatient = () => {
 }
 
 export const addPatient = (patient) => {
-    
+    postPatient(patient)
 }

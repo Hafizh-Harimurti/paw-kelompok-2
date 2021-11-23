@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 
 import MedicationRow from '../components/MedicationRow';
-import { patientFormStartup, addMedication, removeMedication} from '../logic/patientFormLogic';
+import { addMedication, removeMedication, submitPatient} from '../logic/patientFormLogic';
 
 const PatientForm = () => {
-
-    const formStartup = patientFormStartup()
 
     const [newPatientsInfo, setNewPatientsInfo] = useState({})
     const [newMedication, setNewMedication] = useState("")
@@ -24,8 +22,9 @@ const PatientForm = () => {
     }
 
     const handlePatientSubmit = (event) => {
+        event.preventDefault()
         if(buttonPressed === "submitPatient"){
-
+            submitPatient(newPatientsInfo, newMedication)
         }
     }
 

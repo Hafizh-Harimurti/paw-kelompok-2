@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { createTheme, Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
-import { postQueue, putQueue, deleteQueue, getQueue } from '../adapters/patients';
+import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
+import { postQueue } from '../adapters/patients';
 
 const Queue = () => {
 
-    const [queueValue, setQueueValue] = React.useState({
+    const [queueValue, setQueueValue] = useState({
         ownerName: "", 
         date: "", 
         petName: "", 

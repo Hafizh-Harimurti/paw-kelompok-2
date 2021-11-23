@@ -1,10 +1,10 @@
 import React from 'react';
 
 import '../styles/patient.css'
-import { deletePatients } from '../adapters/patients';
+import { deletePatient } from '../adapters/patients';
 
 export default function PatientRow(props){
-    patient = props.patient
+    const patient = props.patient
     function removePatient(patient){
         deletePatient(patient)
     }

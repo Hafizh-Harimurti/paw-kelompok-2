@@ -1,18 +1,18 @@
 import React, {useState} from 'react'
 import '../styles/patient.css'
-import { getPatients, postPatients, putPatients, deletePatients } from '../adapters/patients';
+import { getPatients} from '../adapters/patients';
 import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/Input';
+
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
+
+
 import PatientRow from '../components/PatientRow';
 import { getPatientById } from '../logic/patientLogic';
 
 const Patient = () => {
     const Patients = getPatients()
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         _id: '',
         ownerName: '',
         petName: '',
@@ -23,7 +23,9 @@ const Patient = () => {
         currentTreatments: []
     });
     const handleChange = (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        const name = event.target.name
+        const value = event.target.value
+        setValues((values)=>({ ...values, [name]: value }));
     };
 
     function addPatient(e) {
@@ -33,7 +35,6 @@ const Patient = () => {
 
     const viewSpecificPatient = (key) => {
         getPatientById(key)
-        app.get('/patients/')
     }
 
     return(
@@ -52,7 +53,7 @@ const Patient = () => {
                             id="nama"
                             label="Nama"
                             value={values.name}
-                            onChange={handleChange('name')}
+                            onChange={handleChange}
                         />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
@@ -60,30 +61,23 @@ const Patient = () => {
                         <OutlinedInput
                             id="petName"
                             label="Your Pet Name"
-                            onChange={handleChange('petName')}
+                            onChange={handleChange}
                         />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
-                        <TextField
+                    <InputLabel htmlFor="petType">Your Pet Type</InputLabel>
+                        <OutlinedInput
                             id="petType"
-                            select
-                            label="Your Pet"
-                            value={values.petType}
-                            onChange={handleChange('petType')}
-                            >
-                            {petType.map((type) => (
-                                <MenuItem key={type.type} value={type.type}>
-                                {type.type}
-                                </MenuItem>
-                            ))}
-                            </TextField>
+                            label="Your Pet Type"
+                            onChange={handleChange}
+                        />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
                         <InputLabel htmlFor="address">Address</InputLabel>
                         <OutlinedInput
                             id="address"
                             label="Address"
-                            onChange={handleChange('address')}
+                            onChange={handleChange}
                         />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
@@ -91,7 +85,7 @@ const Patient = () => {
                         <OutlinedInput
                             id="phone"
                             label="Phone Number"
-                            onChange={handleChange('phone')}
+                            onChange={handleChange}
                         />
                     </FormControl>
                     <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
@@ -99,7 +93,7 @@ const Patient = () => {
                         <OutlinedInput
                             id="desc"
                             label="Description"
-                            onChange={handleChange('desc')}
+                            onChange={handleChange}
                         />
                     </FormControl>
                     <button className="addBtn" onClick={addPatient}>Add Patient</button>
