@@ -53,32 +53,32 @@ const Queue = () => {
                         <TextField id="date" name="date"
                         InputLabelProps={{shrink: true,}}
                         placeholder="Date" label="Date" variant="standard" fullWidth required type="date" 
-                        onChange= {handleChange} />
+                        onChange= {handleChange('date')} />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="ownerName" name="ownerName" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
-                        onChange= {handleChange} fullWidth required  />
+                        onChange= {handleChange('ownerName')} fullWidth required  />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petName" name="petName" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
-                        onChange= {handleChange} fullWidth required />
+                        onChange= {handleChange('petName')} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petType" name="petType" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
-                        onChange= {handleChange} fullWidth required />
+                        onChange= {handleChange('petType')} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="homeAddress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
-                        onChange= {handleChange}fullWidth required />
+                        onChange= {handleChange('homeAddress')}fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
                         <TextField id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
-                        onChange= {handleChange} fullWidth required />
+                        onChange= {handleChange('phoneNumber')} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
