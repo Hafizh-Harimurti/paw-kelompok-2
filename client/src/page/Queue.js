@@ -45,10 +45,10 @@ function Queueui() {
 
                     {modal && (
                         <div className="modal">
-                        <div onClick={toggleModal} className="overlay"></div>
-                        <div className="modal-content">
-                            <QueueAdd/>
-                        </div>
+                            <div onClick={toggleModal} className="overlay"></div>
+                            <div className="modal-content">
+                                <QueueAdd/>
+                            </div>
                         </div>
                     )}
 

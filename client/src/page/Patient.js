@@ -8,8 +8,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import PatientRow from '../components/PatientRow';
-
-const petType = [{type: 'cat'}, {type: 'dog'}, {type: 'rabbit'}]
+import { getPatientById } from '../logic/patientLogic';
 
 const Patient = () => {
     const Patients = getPatients()
@@ -32,13 +31,18 @@ const Patient = () => {
         console.log(values)
     }
 
+    const viewSpecificPatient = (key) => {
+        getPatientById(key)
+        app.get('/patients/')
+    }
+
     return(
         <div className="patient">
             <div className="patientTitle">Patient</div>
             <div className="patientContainer">
                     <ul className="patientListBox">
                         {Patients.map(patient=>{
-                            <PatientRow key={patient.id} patient={patient}/>
+                            <PatientRow key={patient.id} patient={patient} onClick={viewSpecificPatient(this.key)}/>
                         })}
                     </ul>
                 <div className="addPatient">
