@@ -1,8 +1,19 @@
 import * as React from 'react';
 import MaterialTable from 'material-table'
 import { Paper } from '@material-ui/core'
+import { deleteQueue, getQueue } from '../adapters/patients';
 
 function QueueTable() {
+
+  const [queues, setQueues] = React.useState([])
+
+  setQueues(getQueue())
+
+  function editQueue(index){
+    qu
+    deleteQueue()
+  }
+  
   return (
     <div>
       <div style={{ maxWidth: '100%'}}>
@@ -42,22 +53,22 @@ function QueueTable() {
 
           ]}
 
-          data={[
-            // test data
-            { date: '10/09/2021', ownerName: 'owner1', petName: 'pet1', petType: 'cat', homeAddress:'Street C', phoneNumber: '082138' },
-            { date: '12/6/2021', ownerName: 'owner2', petName: 'pet2', petType: 'rabbit', homeAddress:'Street D', phoneNumber: '082138' }
-          ]}
+          data={queues}
 
           actions={[
             {
               icon: 'edit',
               tooltip: 'Edit User',
-              // onClick //
+              onclick: (event, rowData) =>{
+                editQueue(rowData.data.index)
+              }
             },
             {
               icon: 'delete',
               tooltip: 'Delete User',
-              // onClick // 
+              onclick: (event, rowData) =>{
+                removeQueue(rowData.data.index)
+              }
             }
           ]}
 

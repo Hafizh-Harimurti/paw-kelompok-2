@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import QueueTable from '../components/QueueTable'
-import QueueAdd from '../components/QueueAdd'
+import Queue from '../components/QueueAdd'
 import {Box,Button} from '@material-ui/core'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import 'client/src/styles/queue.css'
@@ -47,7 +47,7 @@ function Queueui() {
                         <div className="modal">
                             <div onClick={toggleModal} className="overlay"></div>
                             <div className="modal-content">
-                                <QueueAdd/>
+                                <Queue/>
                             </div>
                         </div>
                     )}

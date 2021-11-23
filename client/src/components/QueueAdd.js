@@ -4,12 +4,9 @@ import { createTheme, Grid, TextField, Button, Card, CardContent, Typography } f
 import React, { useState } from 'react';
 import { postQueue, putQueue, deleteQueue, getQueue } from '../adapters/patients';
 
-
-
 const Queue = () => {
 
-    const Queue = postQueue()
-    const [queuevalue, setqueueValue] = React.useState({
+    const [queueValue, setQueueValue] = React.useState({
         ownerName: "", 
         date: "", 
         petName: "", 
@@ -18,17 +15,16 @@ const Queue = () => {
         phoneNumber: ""
     });
 
-    const handleChange = (prop) => (event) =>{
-        setqueueValue({ ...queuevalue, [prop]: event.target.value});
+    const handleChange = (event) =>{
+        const name = event.target.name
+        const value = event.target.value
+        setQueueValue(values => ({...values, [name]: value}));
     };
 
     function addQueue(e){
         e.preventDefault()
-        console.log(queuevalue)
+        postQueue(queueValue)
     }
-
-
-    
 
     const theme = createMuiTheme({
         typography: {
@@ -57,32 +53,32 @@ const Queue = () => {
                         <TextField id="date" name="date"
                         InputLabelProps={{shrink: true,}}
                         placeholder="Date" label="Date" variant="standard" fullWidth required type="date" 
-                        onChange= {handleChange('date')} />
+                        onChange= {handleChange} />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="ownerName" name="ownerName" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
-                        onChange= {handleChange('ownerName')} fullWidth required  />
+                        onChange= {handleChange} fullWidth required  />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petName" name="petName" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
-                        onChange= {handleChange('petName')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petType" name="petType" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
-                        onChange= {handleChange('petType')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="homeAddress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
-                        onChange= {handleChange('homeAddres')} fullWidth required />
+                        onChange= {handleChange}fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
                         <TextField id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
-                        onChange= {handleChange('phoneNumber')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
@@ -100,4 +96,4 @@ const Queue = () => {
     )
 }
 
-export default QueueAdd
+export default Queue
