@@ -1,32 +1,71 @@
 import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+import MaterialTable from 'material-table'
+import { Paper } from '@material-ui/core'
 
-
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'date', headerName: 'Date', type: 'date', width: 130 },
-  { field: 'ownerName', headerName: 'Owner Name', type: 'string', width: 200 },
-  { field: 'petName', headerName: 'Pet Name', type: 'string', width: 200 },
-  { field: 'petType', headerName: 'Pet Type', type: 'string', width: 200 },
-  { field: 'homeAddress', headerName: 'Home Address', type: 'string', width: 200 },
-  { field: 'phoneNumber', headerName: 'Phone Number', type: 'string', width: 200 },
-];
-
-const rows = [
-  //test data
-  { id: 1, date: '10/09/2021', ownerName: 'owner1', petName: 'pet1', petType: 'cat', homeAddress: 'street A', phoneNumber: '0812174'},
-  { id: 2, date: '15/19/2021', ownerName: 'owner2', petName: 'pet2', petType: 'rabbit', homeAddress: 'street B', phoneNumber: '0823422'},
-];
-
-export default function DataTable() {
+function QueueTable() {
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-      />
+    <div>
+      <div style={{ maxWidth: '100%'}}>
+        <MaterialTable class="table-container"
+
+          options={{
+            search: false,
+            showTitle: false,
+            sorting: false,
+            actionsColumnIndex: -1,
+            rowStyle: { 
+              fontFamily: "Poppins",
+              fontSize: '10pt',
+            },
+            cellStyle: {
+              textAlign: "center",
+            },
+            headerStyle: {
+              backgroundColor: '#00CC99',
+              color: '#FFF',
+              textAlign: "center"
+            },
+
+          }}
+
+          components={{
+            Container: props => <Paper {...props} elevation={0}/>
+          }}
+          
+          columns={[
+            { title: 'Date', field: 'date', type: 'date' },
+            { title: 'Owner Name', field: 'ownerName', type: 'string' },
+            { title: 'Pet Name', field: 'petName', type: 'string' },
+            { title: 'Pet Type', field: 'petType', type: 'string' },
+            { title: 'Home Address', field: 'homeAddress', type: 'string' },
+            { title: 'Phone Number', field: 'phoneNumber', type: 'numeric' },
+
+          ]}
+
+          data={[
+            // test data
+            { date: '10/09/2021', ownerName: 'owner1', petName: 'pet1', petType: 'cat', homeAddress:'Street C', phoneNumber: '082138' },
+            { date: '12/6/2021', ownerName: 'owner2', petName: 'pet2', petType: 'rabbit', homeAddress:'Street D', phoneNumber: '082138' }
+          ]}
+
+          actions={[
+            {
+              icon: 'edit',
+              tooltip: 'Edit User',
+              // onClick //
+            },
+            {
+              icon: 'delete',
+              tooltip: 'Delete User',
+              // onClick // 
+            }
+          ]}
+
+          title=""
+        />
+      </div>
     </div>
-  );
+  )
 }
+
+export default QueueTable
