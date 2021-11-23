@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-const url = "mongodb+srv://dbUserTugas:Pass_db_User@paw-kelompok-2.wmcaw.mongodb.net/paw-kelompok-2?retryWrites=true&w=majority";
+const url = "mongodb://dbUserTugas:Pass_db_User@paw-kelompok-2-shard-00-00.wmcaw.mongodb.net:27017,paw-kelompok-2-shard-00-01.wmcaw.mongodb.net:27017,paw-kelompok-2-shard-00-02.wmcaw.mongodb.net:27017/paw-kelompok-2?ssl=true&replicaSet=atlas-axkbzb-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 const Queue = require('./models/Queue');
 const Patients = require('./models/Patients');

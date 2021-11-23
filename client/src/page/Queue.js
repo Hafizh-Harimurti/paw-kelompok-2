@@ -3,7 +3,7 @@ import QueueTable from '../components/QueueTable'
 import QueueAdd from '../components/QueueAdd'
 import {Box,Button} from '@material-ui/core'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import '../style/queue.css'
+import 'client/src/styles/queue.css'
 
 function Queueui() {
 
