@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 import MedicationRow from '../components/MedicationRow';
-import { addMedication, removeMedication} from '../logic/patientFormLogic';
+import { patientFormStartup, addMedication, removeMedication} from '../logic/patientFormLogic';
 
 const PatientForm = () => {
 
+    const formStartup = patientFormStartup()
 
     const [newPatientsInfo, setNewPatientsInfo] = useState({})
     const [newMedication, setNewMedication] = useState("")
@@ -23,7 +24,9 @@ const PatientForm = () => {
     }
 
     const handlePatientSubmit = (event) => {
+        if(buttonPressed === "submitPatient"){
 
+        }
     }
 
     const handleMedicationsSubmit = (event) => {
@@ -81,7 +84,7 @@ const PatientForm = () => {
                                 })}
                             </ul>
                         </div>
-                        <button name="submitMedication" className="submit" type="submit" onClick={setButtonPressed(this.name)}>Tambah</button>
+                        <button name="submitMedication"  className="submit" type="submit" onClick={setButtonPressed(this.name)}>Tambah</button>
                         <button name="deleteMedication" className="delete" type="submit" onClick={setButtonPressed(this.name)}>Hapus</button>
                     </form>
                     <button name="submitPatient" className="submitall" onClick={setButtonPressed(this.name)}>Tambah</button>
