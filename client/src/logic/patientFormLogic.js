@@ -10,7 +10,7 @@ const [patient, setPatient] = useState({})
 
 const app = Express()
 
-const patientFormStartup = () => {
+export const patientFormStartup = () => {
     app.get('/patient', function(req,res){
         setCurrentMode(req.params.mode)
         if(currentMode !== "add" || currentMode !== "edit"){
@@ -22,8 +22,6 @@ const patientFormStartup = () => {
             return false
         }
     })
-    
-    setId(id||"")
 }
 
 export const getMode = () =>{

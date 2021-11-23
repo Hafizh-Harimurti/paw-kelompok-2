@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MaterialTable from 'material-table'
 import { Paper } from '@material-ui/core'
-import { deleteQueue, getQueue } from '../adapters/patients';
+import { deleteQueue, putQueue, getQueue } from '../adapters/patients';
 
 function QueueTable() {
 
@@ -10,10 +10,13 @@ function QueueTable() {
   setQueues(getQueue())
 
   function editQueue(index){
-    qu
-    deleteQueue()
+    putQueue(queues[index])
   }
   
+  function removeQueue(index){
+    deleteQueue(queues.index)
+  }
+
   return (
     <div>
       <div style={{ maxWidth: '100%'}}>
@@ -44,13 +47,13 @@ function QueueTable() {
           }}
           
           columns={[
+            { title: '_id', field: '_id', type: 'string', hidden: true},
             { title: 'Date', field: 'date', type: 'date' },
             { title: 'Owner Name', field: 'ownerName', type: 'string' },
             { title: 'Pet Name', field: 'petName', type: 'string' },
             { title: 'Pet Type', field: 'petType', type: 'string' },
             { title: 'Home Address', field: 'homeAddress', type: 'string' },
             { title: 'Phone Number', field: 'phoneNumber', type: 'numeric' },
-
           ]}
 
           data={queues}
