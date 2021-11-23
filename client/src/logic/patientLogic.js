@@ -27,3 +27,7 @@ export const getPatientById = (id) => {
 export const getOnePatient = () => {
     return specificPatient
 }
+
+export const addPatient = (patient) => {
+    
+}

@@ -5,6 +5,6 @@ const Form = () => {
     return(
         <div>
             <PatientForm />
-            </div>
+        </div>
     );
     };

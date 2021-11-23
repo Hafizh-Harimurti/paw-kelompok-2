@@ -11,21 +11,7 @@ const [patient, setPatient] = useState({})
 const app = Express()
 
 export const patientFormStartup = () => {
-    app.get('/patient', function(req,res){
-        setCurrentMode(req.params.mode)
-        if(currentMode !== "add" || currentMode !== "edit"){
-            window.alert("Page is accessed incorrectly")
-        } else if(currentMode == "edit") {
-            setPatient(getOnePatient)
-            return true
-        } else {
-            return false
-        }
-    })
-}
-
-export const getMode = () =>{
-    return currentMode
+    setPatient(getOnePatient)
 }
 
 export const addMedication = (medication) => {
@@ -63,13 +49,11 @@ export const submitPatient = (patient) => {
         patient.phoneNumber
     ){
         window.alert("Please fill the required information!")
-    } else if (currentMode === "edit"){
+    } else {
         putPatient(patient)
-    } else if (currentMode === "add"){
-        postPatient(patient)
     }
     app.get('/patient', function(req,res){
-        res.redirect('')
+        res.redirect('/')
     })
 }
 

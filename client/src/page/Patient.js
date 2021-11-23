@@ -20,9 +20,9 @@ const Patient = () => {
         homeAddress: '',
         phoneNumber: '',
         description: '',
-        medications: ''
+        currentTreatments: []
     });
-    const handleChange = (prop) => (event) => {
+    const handleChange = (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
 

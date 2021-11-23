@@ -84,10 +84,10 @@ const PatientForm = () => {
                                 })}
                             </ul>
                         </div>
-                        <button name="submitMedication"  className="submit" type="submit" onClick={setButtonPressed(this.name)}>Tambah</button>
+                        <button name="submitMedication"  className="submit" type="submit" onClick={setButtonPressed(this.name)}>Edit</button>
                         <button name="deleteMedication" className="delete" type="submit" onClick={setButtonPressed(this.name)}>Hapus</button>
                     </form>
-                    <button name="submitPatient" className="submitall" onClick={setButtonPressed(this.name)}>Tambah</button>
+                    <button name="submitPatient" className="submitall" onClick={setButtonPressed(this.name)}>Edit</button>
                     <button name="deletePatient" className="deleteall" onClick={setButtonPressed(this.name)}>Hapus</button>
                 </form>
             </div>
