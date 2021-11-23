@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import QueueTable from './components/QueueTable'
-import QueueAdd from './components/QueueAdd'
+import QueueTable from '../components/QueueTable'
+import QueueAdd from '../components/QueueAdd'
 import {Box,Button} from '@material-ui/core'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import './Queueui.css'
+import '../style/queue.css'
 
 function Queueui() {
 
