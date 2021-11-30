@@ -131,7 +131,7 @@ useEffect(()=>{
                             {queueData.map((queue) => (
                                 <Fragment>
                                     {editQueueId === queue._id?(
-                                        <EditableQueueRow editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>
+                                        <EditableQueueRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/>
                                     ):(
                                         <ReadOnlyQueueRow queue={queue} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
                                     )}
