@@ -12,14 +12,8 @@
     font-weight: 800;
     color: #00cc99;
 }
-.homeQuote{
-    font-size: 2rem;
-    font-weight: 500;
-    color: #393939;
-    line-height: 25px;
-}
 .homeContent{
-    margin-top: 35px;
+    margin-top: 15px;
     color: #292929;
     text-align: justify;
 }

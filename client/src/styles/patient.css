@@ -11,9 +11,10 @@
     font-style: normal;
     font-weight: 600;
     font-size: 34px;
+    margin-top:30px;
 }
 
-.main a {
+.add-button {
     background-color: #00cc99; /* Green */
     color: white;
     padding: 8px 24px;

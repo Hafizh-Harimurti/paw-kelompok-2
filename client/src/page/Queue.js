@@ -103,7 +103,7 @@ useEffect(()=>{
             <Navbar/>
             <h1>Daftar Antrian</h1>
             
-            <button onClick={()=>setQueueAdd(!queueAdd)}>Add Queue</button>
+            <a className="add-button">Add Queue</a>
             {queueAdd? <QueueAdd />: console.log()}
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
