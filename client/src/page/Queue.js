@@ -1,20 +1,99 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
+import Axios from 'axios'
 import '../styles/Queue.css'
 import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
 
 const Queue = () =>  {
 
-const QueueData = useState()
+const queueApiPath = "http://localhost:3000/api/queue"
+
+const [queueData, setQueueData] = useState([])
+
+const [editFormData, setEditFormData] = useState({
+    date: "",
+    ownerName: "",
+    petName: "",
+    petType: "",
+    homeAddress: "",
+    phoneNumber: ""
+})
+
+const [editQueueId, setEditQueueId] = useState(null)
+
+const handleEditFormChange = (event) =>{
+    event.preventDefault()
+    const name = event.target.name
+    const value = event.target.value
+    setEditFormData((values)=>({...values, [name]:value}))
+}
+
+const handleEditFormSubmit = (event) => {
+    event.preventDefault()
+    Axios.put(queueApiPath,{
+        _id: editQueueId,
+        date: editFormData.date,
+        ownerName: editFormData.ownerName,
+        petName: editFormData.petName,
+        petType: editFormData.petType,
+        homeAddress: editFormData.homeAddress,
+        phoneNumber: editFormData.phoneNumber
+    })
+    .then((response)=>{
+        window.alert(response.data)
+        Axios.get(queueApiPath)
+        .then(response=>{
+            setQueueData(response.data)
+            setEditQueueId(null)
+        })
+    })
+    
+}
+
+const handleEditClick = (event, queue) => {
+    event.preventDefault()
+    setEditQueueId(queue._id)
+    setEditFormData({
+        date: queue.date,
+        ownerName: queue.ownerName,
+        petName: queue.petName,
+        petType: queue.petType,
+        homeAddress: queue.homeAddress,
+        phoneNumber: queue.phoneNumber
+    })
+}
+
+const handleDeleteClick = (event, queue) => {
+    event.preventDefault()
+    Axios.delete(queueApiPath,{
+        data:{ _id: queue._id}
+    })
+    .then((response)=>{
+        window.alert(response.data)
+        Axios.get(queueApiPath)
+        .then(response=>{
+            setQueueData(response.data)
+        })
+    })
+}
+
+useEffect(()=>{
+    Axios.get(queueApiPath)
+        .then(response=>{
+            setQueueData(response.data)
+        })
+},[])
 
     return (
-        <div class="main">
-            <h1>Queue</h1>
-            <a href="#" class="add-button"><span>Add Item</span></a>
-            <div class="container" >
-                    <table CELLSPACING="0">
+        <div className="main">
+            <Navbar/>
+            <h1>Daftar Antrian</h1>
+            <a href="#" className="add-button"><span>Add Item</span></a>
+            <div className="container" >
+                <form onSubmit={handleEditFormSubmit}>
+                    <table cellSpacing="0">
                         <thead>
-                            <tr class="table-header" >
+                            <tr className="table-header" >
                                 <td>Date</td>
                                 <td>Owner Name</td>
                                 <td>Pet Name</td>
@@ -26,15 +105,18 @@ const QueueData = useState()
                         </thead>
                         
                         <tbody>
-                            {QueueData.map(() => (
+                            {queueData.map((queue) => (
                                 <Fragment>
-                                    <ReadOnlyQueueRow />
-                                    {/* <EditableQueueRow /> */}
+                                    {editQueueId === queue._id?(
+                                        <EditableQueueRow editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>
+                                    ):(
+                                        <ReadOnlyQueueRow queue={queue} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
+                                    )}
                                 </Fragment>
                             ))}
-                            
                         </tbody>
                     </table>
+                </form>
             </div>
         </div>
     )

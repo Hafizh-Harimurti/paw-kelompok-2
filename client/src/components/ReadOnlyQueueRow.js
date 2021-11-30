@@ -1,18 +1,18 @@
 import React from 'react'
 import '../styles/Queue.css'
 
-const ReadOnlyQueueRow = () => {
+const ReadOnlyQueueRow = ({ queue, handleEditClick, handleDeleteClick }) => {
     return (
-            <tr class="table-data">
-                <td>date</td>
-                <td>ownerName</td>
-                <td>petName</td>
-                <td>petType</td>
-                <td>homeAddress</td>
-                <td>phoneNumber</td>
+            <tr className="table-data">
+                <td>{queue.date}</td>
+                <td>{queue.ownerName}</td>
+                <td>{queue.petName}</td>
+                <td>{queue.petType}</td>
+                <td>{queue.homeAddress}</td>
+                <td>{queue.phoneNumber}</td>
                 <td>
-                    <button type="button" onClick="">Edit</button>
-                    <button type="button" onClick="">Delete</button>
+                    <button onClick={(event) => handleEditClick(event, queue)}>Edit</button>
+                    <button onClick={(event) => handleDeleteClick(event, queue)}>Delete</button>
                 </td>
             </tr>
     )

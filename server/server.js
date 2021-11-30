@@ -61,7 +61,7 @@ app.put('/api/queue', (req,res)=>{
 
 //DELETE queue
 app.delete('/api/queue', (req,res)=>{
-    Queue.findOneAndDelete({_id:req.body._id})
+    Queue.findByIdAndRemove(req.body._id)
         .then(res.send("Delete successful"))
         .catch(err=>{
             res.send(err)
@@ -111,11 +111,10 @@ app.put('/api/patients',async(req,res)=>{
 
 
 // DELETE Patients
-app.delete('/api/patients', async(req, res) => {
-    const patientItems = await Patients.findOne({ _id: req.body._id });
-    const deleted = await patientItems.remove()
-    .then(res.send("Delete successful"))
-    .catch(err=>{
-        res.send(err)
-    });
+app.delete('/api/patients', (req, res) => {
+    Patients.findByIdAndRemove(req.body._id)
+        .then(res.send("Delete successful"))
+        .catch(err=>{
+            res.send(err)
+        });
 });

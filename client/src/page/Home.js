@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import VetIlustration from "../assets/vet_ilustration.jpg"
+//import VetIlustration from "../assets/vet_ilustration.jpg"
 import "../styles/home.css"
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
                     <button className="homeBtn">Periksa Sekarang!</button>
                 </div>
                 <div className="Ilustration">
-                    <img className="vetIlustration" src={VetIlustration} alt="Veternier"></img>
+                    
                 </div>
             </div>
         </div>

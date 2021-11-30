@@ -1,103 +1,127 @@
-import React, {useState} from 'react'
-import '../styles/patient.css'
-import { getPatients} from '../adapters/patients';
-import FormControl from '@mui/material/FormControl';
+import React, { useState, Fragment, useEffect } from 'react'
+import Axios from 'axios'
+import '../styles/Patient.css'
+import ReadOnlyPatientRow from '../components/ReadOnlyPatientRow'
+import EditablePatientRow from '../components/EditablePatientRow'
+import Navbar from '../components/Navbar'
 
-import InputLabel from '@mui/material/InputLabel';
-import OutlinedInput from '@mui/material/OutlinedInput';
+const Patient = () =>  {
 
+const patientsApiPath = "http://localhost:3000/api/patients"
 
-import PatientRow from '../components/PatientRow';
-import { getPatientById } from '../logic/patientLogic';
+const [patientsData, setPatientsData] = useState([])
 
-const Patient = () => {
-    const Patients = getPatients()
-    const [values, setValues] = useState({
-        _id: '',
-        ownerName: '',
-        petName: '',
-        petType: '',
-        homeAddress: '',
-        phoneNumber: '',
-        description: '',
-        currentTreatments: []
-    });
-    const handleChange = (event) => {
-        const name = event.target.name
-        const value = event.target.value
-        setValues((values)=>({ ...values, [name]: value }));
-    };
+const [editFormData, setEditFormData] = useState({
+    ownerName: "",
+    petName: "",
+    petType: "",
+    homeAddress: "",
+    phoneNumber: "",
+    description: "",
+    currentTreatments: ""
+})
 
-    function addPatient(e) {
-        e.preventDefault()
-        console.log(values)
-    }
+const [editPatientsId, setEditPatientsId] = useState(null)
 
-    const viewSpecificPatient = (key) => {
-        getPatientById(key)
-    }
+const handleEditFormChange = (event) =>{
+    event.preventDefault()
+    const name = event.target.name
+    const value = event.target.value
+    setEditFormData((values)=>({...values, [name]:value}))
+}
 
-    return(
-        <div className="patient">
-            <div className="patientTitle">Patient</div>
-            <div className="patientContainer">
-                    <ul className="patientListBox">
-                        {Patients.map(patient=>{
-                            <PatientRow key={patient.id} patient={patient} onClick={viewSpecificPatient(this.key)}/>
-                        })}
-                    </ul>
-                <div className="addPatient">
-                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="nama">Nama</InputLabel>
-                        <OutlinedInput
-                            id="nama"
-                            label="Nama"
-                            value={values.name}
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
-                        <InputLabel htmlFor="petName">Your Pet Name</InputLabel>
-                        <OutlinedInput
-                            id="petName"
-                            label="Your Pet Name"
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '10ch' }}>
-                    <InputLabel htmlFor="petType">Your Pet Type</InputLabel>
-                        <OutlinedInput
-                            id="petType"
-                            label="Your Pet Type"
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="address">Address</InputLabel>
-                        <OutlinedInput
-                            id="address"
-                            label="Address"
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="phone">Phone Number</InputLabel>
-                        <OutlinedInput
-                            id="phone"
-                            label="Phone Number"
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <FormControl fullWidth sx={{ m: 1, width: '20.5ch' }}>
-                        <InputLabel htmlFor="desc">Description</InputLabel>
-                        <OutlinedInput
-                            id="desc"
-                            label="Description"
-                            onChange={handleChange}
-                        />
-                    </FormControl>
-                    <button className="addBtn" onClick={addPatient}>Add Patient</button>
-                </div>
+const handleEditFormSubmit = (event) => {
+    event.preventDefault()
+    Axios.put(patientsApiPath,{
+        _id: editPatientsId,
+        ownerName: editFormData.ownerName,
+        petName: editFormData.petName,
+        petType: editFormData.petType,
+        homeAddress: editFormData.homeAddress,
+        phoneNumber: editFormData.phoneNumber,
+        description: editFormData.description,
+        currentTreatments: editFormData.currentTreatments
+    })
+    .then((response)=>{
+        window.alert(response.data)
+        Axios.get(patientsApiPath)
+        .then(response=>{
+            setPatientsData(response.data)
+            setEditPatientsId(null)
+        })
+    })
+    
+}
+
+const handleEditClick = (event, patient) => {
+    event.preventDefault()
+    setEditPatientsId(patient._id)
+    setEditFormData({
+        ownerName: patient.ownerName,
+        petName: patient.petName,
+        petType: patient.petType,
+        homeAddress: patient.homeAddress,
+        phoneNumber: patient.phoneNumber,
+        description: patient.description,
+        currentTreatments: patient.currentTreatments
+    })
+}
+
+const handleDeleteClick = (event, patient) => {
+    event.preventDefault()
+    Axios.delete(patientsApiPath,{
+       data:{ _id: patient._id}
+    })
+    .then((response)=>{
+        window.alert(response.data)
+        Axios.get(patientsApiPath)
+        .then(response=>{
+            setPatientsData(response.data)
+        })
+    })
+}
+
+useEffect(()=>{
+    Axios.get(patientsApiPath)
+        .then(response=>{
+            setPatientsData(response.data)
+        })
+},[])
+
+    return (
+        <div className="main">
+            <Navbar/>
+            <h1>Daftar Pasien</h1>
+            <a href="#" className="add-button"><span>Add Item</span></a>
+            <div className="container" >
+                <form onSubmit={handleEditFormSubmit}>
+                    <table cellSpacing="0">
+                        <thead>
+                            <tr className="table-header" >
+                                <td>Owner Name</td>
+                                <td>Pet Name</td>
+                                <td>Pet Type</td>
+                                <td>Home Address</td>
+                                <td>Phone Number</td>
+                                <td>Description</td>
+                                <td>Treatments</td>
+                                <td>Actions</td>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {patientsData.map((patient) => (
+                                <Fragment>
+                                    {editPatientsId === patient._id?(
+                                        <EditablePatientRow editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>
+                                    ):(
+                                        <ReadOnlyPatientRow patient={patient} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
+                                    )}
+                                </Fragment>
+                            ))}
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
     )

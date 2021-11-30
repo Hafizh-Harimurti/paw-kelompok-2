@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
-import { postQueue } from '../adapters/patients';
+import { postQueue } from '../adapters/adapters';
 
 const Queue = () => {
 

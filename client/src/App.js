@@ -4,16 +4,16 @@ import { Routes, Route } from "react-router-dom";
 
 import './App.css';
 
-import Patient from './page/Patient';
-import Queueui from './page/Queue';
-import PatientForm from './page/PatientForm';
+import Home from './page/Home';
+import Queue from './page/Queue';
+import Patients from './page/Patient'
 
 function App(){
   return (
     <Routes>
-      <Route path="/patient/*" element={<Patient/>}/>
-      <Route path="/patient/form/*" element={<PatientForm/>}/>
-      <Route path="/queue/*" element={<Queueui/>}/>
+      <Route path="/*" element={<Home/>}/>
+      <Route path="/queue/*" element={<Queue/>}/>
+      <Route path="/patients/*" element={<Patients/>}/>
     </Routes>
   )
 }

@@ -1,46 +1,53 @@
 import React from 'react'
 
-const EditableQueueRow = () => {
+const EditableQueueRow = ({ editFormData, handleEditFormChange}) => {
     return (
         <tr>
             <td>
                 <input
-                    type="date" required="required" 
-                    name="date"
+                    type="datetime-local" required="required" 
+                    name="date" onChange={handleEditFormChange}
+                    value={editFormData.date}
                 ></input>
             </td>
             <td>
                 <input
                     type="text" required="required" 
-                    name="ownerName" 
+                    name="ownerName" onChange={handleEditFormChange}
+                    value={editFormData.ownerName}
                 ></input>
             </td>
             <td>
                 <input
                     type="text" required="required" 
-                    name="petName"
+                    name="petName" onChange={handleEditFormChange}
+                    value={editFormData.petName}
                 ></input>
             </td>
             <td>
                 <input
                     type="text" required="required" 
-                    name="petType"
+                    name="petType" onChange={handleEditFormChange}
+                    value={editFormData.petType}
                 ></input>
             </td>
             <td>
                 <input
                     type="text" required="required" 
-                    name="homeAddress"
+                    name="homeAddress" onChange={handleEditFormChange}
+                    value={editFormData.homeAddress}
                 ></input>
             </td>
             <td>
                 <input
                     type="text" required="required" 
-                    name="phoneNumber"
+                    name="phoneNumber" onChange={handleEditFormChange}
+                    value={editFormData.phoneNumber}
                 ></input>
             </td>
             <td>
                 <button type="submit">Save</button>
+                <button type="button">Cancel</button>
             </td>
         </tr>
     )

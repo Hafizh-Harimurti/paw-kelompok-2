@@ -23,7 +23,7 @@ const patients = new Schema({
         required: true
     },
     description: String,
-    currentTreatments: [String]
+    currentTreatments: String
 },{
     collection : 'patients'
 });
