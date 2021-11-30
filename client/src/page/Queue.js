@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import '../style/Queue.css'
+import '../styles/Queue.css'
 import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
 
