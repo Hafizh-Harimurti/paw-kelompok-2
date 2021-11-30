@@ -53,37 +53,37 @@ const Patient = () => {
 
                         <Grid item xs={12}>
                         <TextField id="ownerName" name="ownerName" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
-                        onChange= {handleChange('ownerName')} fullWidth required  />
+                        onChange= {e => handleChange(e)} fullWidth required  />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petName" name="petName" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
-                        onChange= {handleChange('petName')} fullWidth required />
+                        onChange= {e => handleChange(e)} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petType" name="petType" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
-                        onChange= {handleChange('petType')} fullWidth required />
+                        onChange= {e => handleChange(e)} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="homeAddress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
-                        onChange= {handleChange('homeAddress')}fullWidth required />
+                        onChange= {e => handleChange(e)}fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
                         <TextField id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
-                        onChange= {handleChange('phoneNumber')} fullWidth required />
+                        onChange= {e => handleChange(e)} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="description" name="description" placeholder="Enter Description" label="Description" variant="standard" 
-                        onChange= {handleChange('pdescription')} fullWidth required />
+                        onChange= {e => handleChange(e)} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="currentTreatments" name="currentTreatments" placeholder="Enter Treatments" label="Treatments" variant="standard" 
-                        onChange= {handleChange('description')} fullWidth required />
+                        onChange= {e => handleChange(e)} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>

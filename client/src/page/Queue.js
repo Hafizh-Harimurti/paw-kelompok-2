@@ -5,7 +5,7 @@ import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
 import Navbar from '../components/Navbar'
 import QueueAdd from '../components/QueueAdd'
-
+import { Link } from 'react-router-dom';
 
 const Queue = () =>  {
 
@@ -103,7 +103,7 @@ useEffect(()=>{
             <Navbar/>
             <h1>Daftar Antrian</h1>
             
-            <a className="add-button">Add Queue</a>
+            <Link className="add-button" to="/queue/add"> Add Queue</Link>
             {queueAdd? <QueueAdd />: console.log()}
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
