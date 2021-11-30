@@ -48,7 +48,7 @@ const Patient = () => {
                 </Typography>  
                 
 
-                    <form onSubmit={addQueue}>
+                    <form onSubmit={addPatient}>
                     <Grid container spacing={1}>
 
                         <Grid item xs={12}>
