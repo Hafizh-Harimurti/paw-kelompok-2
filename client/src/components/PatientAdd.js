@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
-import { postPatient } from '../adapters/adapters';
+import Axios from 'axios'
 
-const Patient = () => {
+
+const PatientAdd = () => {
 
     const [patientValue, setPatientValue] = useState({
         ownerName: "", 
@@ -24,7 +25,11 @@ const Patient = () => {
 
     function addPatient(e){
         e.preventDefault()
-        postPatient(patientValue)
+        Axios.post("http://localhost:3000/api/patients", patientValue)
+        .then(response=>{
+            alert(response.data)
+        })
+
     }
 
     const theme = createMuiTheme({
@@ -67,7 +72,7 @@ const Patient = () => {
                         </Grid>
 
                         <Grid item xs={12}>
-                        <TextField id="homeAddress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
+                        <TextField id="homeAddress" name="homeAddress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
                         onChange= {e => handleChange(e)}fullWidth required />
                         </Grid>
                         
@@ -101,4 +106,4 @@ const Patient = () => {
     )
 }
 
-export default Patient
+export default PatientAdd
