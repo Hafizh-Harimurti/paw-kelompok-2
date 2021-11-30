@@ -3,7 +3,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
 import { postQueue } from '../adapters/adapters';
 
-const Queue = () => {
+const QueueAdd = () => {
 
     const [queueValue, setQueueValue] = useState({
         ownerName: "", 
@@ -52,32 +52,32 @@ const Queue = () => {
                         <TextField id="date" name="date"
                         InputLabelProps={{shrink: true,}}
                         placeholder="Date" label="Date" variant="standard" fullWidth required type="date" 
-                        onChange= {handleChange('date')} />
+                        onChange= {handleChange} />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="ownerName" name="ownerName" placeholder="Enter Owner Name" label="Owner Name" variant="standard" 
-                        onChange= {handleChange('ownerName')} fullWidth required  />
+                        onChange= {handleChange} fullWidth required  />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petName" name="petName" placeholder="Enter Pet Name" label="Pet Name" variant="standard" 
-                        onChange= {handleChange('petName')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="petType" name="petType" placeholder="Enter Pet Type" label="Pet Type" variant="standard" 
-                        onChange= {handleChange('petType')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
 
                         <Grid item xs={12}>
                         <TextField id="homeAddress" name="homeAdress" placeholder="Enter Home Address" label="Home Address" variant="standard" 
-                        onChange= {handleChange('homeAddress')}fullWidth required />
+                        onChange= {handleChange}fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
                         <TextField id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" label="Phone Number" variant="standard" 
-                        onChange= {handleChange('phoneNumber')} fullWidth required />
+                        onChange= {handleChange} fullWidth required />
                         </Grid>
                         
                         <Grid item xs={12}>
@@ -95,4 +95,4 @@ const Queue = () => {
     )
 }
 
-export default Queue
+export default QueueAdd

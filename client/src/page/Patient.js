@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import Axios from 'axios'
-import '../styles/Patient.css'
+import '../styles/patient.css'
 import ReadOnlyPatientRow from '../components/ReadOnlyPatientRow'
 import EditablePatientRow from '../components/EditablePatientRow'
 import Navbar from '../components/Navbar'
