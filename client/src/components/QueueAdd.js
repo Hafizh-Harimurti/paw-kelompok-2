@@ -27,8 +27,8 @@ const QueueAdd = () => {
         e.preventDefault()
         Axios.post("http://localhost:3000/api/queue", queueValue)
         .then(response=>{
-            alert(response.data)
             if(response.data === "Create successful"){
+                alert(response.data)
                 navigate('/queue')
             }
         })

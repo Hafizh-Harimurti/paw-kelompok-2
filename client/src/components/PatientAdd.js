@@ -30,8 +30,8 @@ const PatientAdd = () => {
         e.preventDefault()
         Axios.post("http://localhost:3000/api/patients", patientValue)
         .then(response=>{
-            alert(response.data)
             if(response.data === "Create successful"){
+                alert(response.data)
                 navigate('/patients')
             }
         })
