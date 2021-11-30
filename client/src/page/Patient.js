@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom';
 
 const Patient = () =>  {
 
-const patientsApiPath = "http://localhost:3000/api/patients"
+const patientsApiPath = "http://localhost:5000/api/patients"
 
 const [patientsData, setPatientsData] = useState([])
+const [patientsDataFiltered, setPatientsDataFiltered] = useState([])
 
 const [editFormData, setEditFormData] = useState({
     ownerName: "",
@@ -94,11 +95,20 @@ useEffect(()=>{
         })
 },[])
 
+    const [Input,setInput] = useState('')
+    const updateInput = (event) => {
+        setInput(event.target.value)
+        const filtered = patientsData.filter(patient => {
+            return patient.ownerName.toLowerCase().includes(Input.toLowerCase())
+           })
+           setPatientsDataFiltered(filtered);
+    }
     return (
         <div className="main">
             <Navbar/>
             <h1>Daftar Pasien</h1>
             <Link className="add-button" to="/patients/add"> Add Item</Link>
+            <input className="searchBar"value={Input} placeholder='Search by owner name...' onChange={e => updateInput(e)}></input>
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
                     <table cellSpacing="0">
@@ -116,7 +126,15 @@ useEffect(()=>{
                         </thead>
                         
                         <tbody>
-                            {patientsData.map((patient) => (
+                            {Input?patientsDataFiltered.map((patient) => (
+                                <Fragment>
+                                    {editPatientsId === patient._id?(
+                                        <EditablePatientRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/>
+                                    ):(
+                                        <ReadOnlyPatientRow patient={patient} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
+                                    )}
+                                </Fragment>
+                            )):patientsData.map((patient) => (
                                 <Fragment>
                                     {editPatientsId === patient._id?(
                                         <EditablePatientRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/>
