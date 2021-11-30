@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditableQueueRow = ({ editFormData, handleEditFormChange}) => {
+const EditableQueueRow = ({ editFormData, handleEditFormChange, handleCancelClick}) => {
     return (
         <tr>
             <td>
