@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
-import { postQueue } from '../adapters/adapters';
+import { Grid, TextField, Button, Card, CardContent, Typography} from '@material-ui/core';
+import Axios from 'axios'
+import { Navigate } from 'react-router';
 
 const QueueAdd = () => {
 
@@ -22,7 +23,11 @@ const QueueAdd = () => {
 
     function addQueue(e){
         e.preventDefault()
-        console.log(queueValue)
+        Axios.post("http://localhost:3000/api/queue", queueValue)
+        .then(response=>{
+            alert(response.data)
+        })
+        
     }
 
     const theme = createMuiTheme({
@@ -81,6 +86,7 @@ const QueueAdd = () => {
                         </Grid>
                         
                         <Grid item xs={12}>
+                        
                         <Button type="submit" onClick={addQueue} variant="contained" color="primary" value="QUEUEDETAILS" fullWidth style={{ backgroundColor: '#00CC99', color: '#FFFFFF', textTransform: 'none'}}>
                             <Typography>Add</Typography></Button>
                         </Grid>
