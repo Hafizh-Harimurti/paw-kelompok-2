@@ -107,7 +107,7 @@ useEffect(()=>{
         <div className="main">
             <Navbar/>
             <h1>Daftar Pasien</h1>
-            <Link className="add-button" to="/patients/add"> Add Item</Link>
+            <Link className="add-button" to="/patients/add"> Add Patient</Link>
             <input className="searchBar"value={Input} placeholder='Search by owner name...' onChange={e => updateInput(e)}></input>
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
