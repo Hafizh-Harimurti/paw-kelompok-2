@@ -1,15 +1,22 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React, { useState, Fragment, useEffect, SetState } from 'react'
 import Axios from 'axios'
 import '../styles/Queue.css'
 import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
 import Navbar from '../components/Navbar'
+<<<<<<< HEAD
+=======
+import QueueAdd from '../components/QueueAdd'
+import { Link } from 'react-router-dom';
+>>>>>>> 3a134d9710b32dbea72c0c5b2650b8b8828739a2
 
 const Queue = () =>  {
 
 const queueApiPath = "http://localhost:3000/api/queue"
 
 const [queueData, setQueueData] = useState([])
+
+const[queueAdd, setQueueAdd] = useState(false)
 
 const [editFormData, setEditFormData] = useState({
     date: "",
@@ -78,6 +85,14 @@ const handleDeleteClick = (event, queue) => {
     })
 }
 
+const [modal, setModal] = useState(false);
+
+const toggleModal = () => {
+  setModal(!modal);
+};
+
+
+
 useEffect(()=>{
     Axios.get(queueApiPath)
         .then(response=>{
@@ -85,11 +100,14 @@ useEffect(()=>{
         })
 },[])
 
+    
     return (
         <div className="main">
             <Navbar/>
             <h1>Daftar Antrian</h1>
-            <a href="#" className="add-button"><span>Add Item</span></a>
+            
+            <Link className="add-button" to="/queue/add"> Add Queue</Link>
+            {queueAdd? <QueueAdd />: console.log()}
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
                     <table cellSpacing="0">

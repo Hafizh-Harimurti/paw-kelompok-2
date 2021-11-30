@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Patient.css'
+import '../styles/patient.css'
 
 const ReadOnlyPatientRow = ({ patient, handleEditClick, handleDeleteClick }) => {
     return (

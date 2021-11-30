@@ -1,9 +1,10 @@
 import React, { useState, Fragment, useEffect } from 'react'
 import Axios from 'axios'
-import '../styles/Patient.css'
+import '../styles/patient.css'
 import ReadOnlyPatientRow from '../components/ReadOnlyPatientRow'
 import EditablePatientRow from '../components/EditablePatientRow'
 import Navbar from '../components/Navbar'
+import { Link } from 'react-router-dom';
 
 const Patient = () =>  {
 
@@ -92,7 +93,7 @@ useEffect(()=>{
         <div className="main">
             <Navbar/>
             <h1>Daftar Pasien</h1>
-            <a href="#" className="add-button"><span>Add Item</span></a>
+            <Link className="add-button" to="/patients/add"> Add Item</Link>
             <div className="container" >
                 <form onSubmit={handleEditFormSubmit}>
                     <table cellSpacing="0">
