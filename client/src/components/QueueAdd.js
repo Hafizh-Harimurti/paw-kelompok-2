@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Grid, TextField, Button, Card, CardContent, Typography} from '@material-ui/core';
 import Axios from 'axios'
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const QueueAdd = () => {
+
+    let navigate = useNavigate()
 
     const [queueValue, setQueueValue] = useState({
         ownerName: "", 
@@ -26,6 +28,9 @@ const QueueAdd = () => {
         Axios.post("http://localhost:3000/api/queue", queueValue)
         .then(response=>{
             alert(response.data)
+            if(response.data === "Create successful"){
+                navigate('/queue')
+            }
         })
         
     }
@@ -54,7 +59,7 @@ const QueueAdd = () => {
                     <form onSubmit={addQueue}>
                     <Grid container spacing={1}>
                         <Grid item xs={12}>
-                        <TextField id="date" name="date"
+                        <TextField id="datetime-local" name="date"
                         InputLabelProps={{shrink: true,}}
                         placeholder="Date" label="Date" variant="standard" fullWidth required type="date" 
                         onChange= {e => handleChange(e)} />

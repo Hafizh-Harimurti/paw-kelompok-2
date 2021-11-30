@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditablePatientRow = ({ editFormData, handleEditFormChange}) => {
+const EditablePatientRow = ({ editFormData, handleEditFormChange, handleCancelClick}) => {
     return (
         <tr>
             <td>
@@ -54,7 +54,7 @@ const EditablePatientRow = ({ editFormData, handleEditFormChange}) => {
             </td>
             <td>
                 <button type="submit">Save</button>
-                <button type="button">Cancel</button>
+                <button type="button" onClick={(event)=>handleCancelClick(event)}>Cancel</button>
             </td>
         </tr>
     )

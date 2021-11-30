@@ -2,9 +2,12 @@ import React, {useState} from 'react'
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { Grid, TextField, Button, Card, CardContent, Typography } from '@material-ui/core';
 import Axios from 'axios'
+import { useNavigate } from 'react-router';
 
 
 const PatientAdd = () => {
+
+    let navigate = useNavigate()
 
     const [patientValue, setPatientValue] = useState({
         ownerName: "", 
@@ -28,6 +31,9 @@ const PatientAdd = () => {
         Axios.post("http://localhost:3000/api/patients", patientValue)
         .then(response=>{
             alert(response.data)
+            if(response.data === "Create successful"){
+                navigate('/patients')
+            }
         })
 
     }

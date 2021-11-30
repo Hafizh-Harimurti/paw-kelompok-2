@@ -4,13 +4,12 @@ import '../styles/Queue.css'
 import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
 import Navbar from '../components/Navbar'
-<<<<<<< HEAD
-=======
 import QueueAdd from '../components/QueueAdd'
 import { Link } from 'react-router-dom';
->>>>>>> 3a134d9710b32dbea72c0c5b2650b8b8828739a2
+
 
 const Queue = () =>  {
+
 
 const queueApiPath = "http://localhost:3000/api/queue"
 
@@ -56,6 +55,11 @@ const handleEditFormSubmit = (event) => {
         })
     })
     
+}
+
+const handleCancelClick = (event) => {
+    event.preventDefault()
+    setEditQueueId(null)
 }
 
 const handleEditClick = (event, queue) => {

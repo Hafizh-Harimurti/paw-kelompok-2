@@ -54,6 +54,11 @@ const handleEditFormSubmit = (event) => {
     
 }
 
+const handleCancelClick = (event) => {
+    event.preventDefault()
+    setEditPatientsId(null)
+}
+
 const handleEditClick = (event, patient) => {
     event.preventDefault()
     setEditPatientsId(patient._id)
@@ -114,7 +119,7 @@ useEffect(()=>{
                             {patientsData.map((patient) => (
                                 <Fragment>
                                     {editPatientsId === patient._id?(
-                                        <EditablePatientRow editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>
+                                        <EditablePatientRow editFormData={editFormData} handleEditFormChange={handleEditFormChange} handleCancelClick={handleCancelClick}/>
                                     ):(
                                         <ReadOnlyPatientRow patient={patient} handleEditClick={handleEditClick} handleDeleteClick={handleDeleteClick}/>
                                     )}

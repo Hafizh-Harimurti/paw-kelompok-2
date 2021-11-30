@@ -47,7 +47,7 @@ const EditableQueueRow = ({ editFormData, handleEditFormChange}) => {
             </td>
             <td>
                 <button type="submit">Save</button>
-                <button type="button">Cancel</button>
+                <button type="button" onClick={(event)=>handleCancelClick(event)}>Cancel</button>
             </td>
         </tr>
     )
