@@ -3,6 +3,7 @@ import Axios from 'axios'
 import '../styles/Queue.css'
 import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
 import EditableQueueRow from '../components/EditableQueueRow'
+import Navbar from '../components/Navbar'
 
 const Queue = () =>  {
 
