@@ -1,64 +1,43 @@
-import React, {useState} from 'react'
-import QueueTable from '../components/QueueTable'
-import Queue from '../components/QueueAdd'
-import {Box,Button} from '@material-ui/core'
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import React, { useState, Fragment } from 'react'
+import '../style/Queue.css'
+import ReadOnlyQueueRow from '../components/ReadOnlyQueueRow'
+import EditableQueueRow from '../components/EditableQueueRow'
 
-function Queueui() {
+const Queue = () =>  {
 
-    const theme = createMuiTheme({
-        typography: {
-          fontFamily: [
-            'Poppins',
-            'sans-serif',
-          ].join(','),
-        },});
+const QueueData = useState()
 
-    const [modal, setModal] = useState(false);
-
-    const toggleModal = () => {
-      setModal(!modal);
-    };
-  
-    if(modal) {
-      document.body.classList.add('active-modal')
-    } else {
-      document.body.classList.remove('active-modal')
-    }
-
-        return (
-            <div className="main">
-                <h1>Queue</h1>
-                <div className="container">
-    
-                    <div className="btn-modal">
-                    <ThemeProvider theme={theme}>
-                        <Box textAlign='center'>
-                            <Button variant="contained" color="secondary" onClick={toggleModal}
-                            style={{backgroundColor: '#00CC99', color: '#FFFFFF', textTransform: 'none'}}>
-                                Add Item
-                                </Button>
-                        </Box>
-                    </ThemeProvider>    
-                    </div>
-
-                    {modal && (
-                        <div className="modal">
-                            <div onClick={toggleModal} className="overlay"></div>
-                            <div className="modal-content">
-                                <Queue/>
-                            </div>
-                        </div>
-                    )}
-
-                    <div className="table">
-                        <QueueTable />
-                    </div>
-
-                </div>
-                
+    return (
+        <div class="main">
+            <h1>Queue</h1>
+            <a href="#" class="add-button"><span>Add Item</span></a>
+            <div class="container" >
+                    <table CELLSPACING="0">
+                        <thead>
+                            <tr class="table-header" >
+                                <td>Date</td>
+                                <td>Owner Name</td>
+                                <td>Pet Name</td>
+                                <td>Pet Type</td>
+                                <td>Home Address</td>
+                                <td>Phone Number</td>
+                                <td>Actions</td>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            {QueueData.map(() => (
+                                <Fragment>
+                                    <ReadOnlyQueueRow />
+                                    {/* <EditableQueueRow /> */}
+                                </Fragment>
+                            ))}
+                            
+                        </tbody>
+                    </table>
             </div>
-        )
-    }
-    
-export default Queueui
+        </div>
+    )
+}
+
+export default Queue
