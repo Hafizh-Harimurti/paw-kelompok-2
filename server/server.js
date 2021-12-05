@@ -16,7 +16,7 @@ mongoose.connect(url,{useNewUrlParser:true})
     .catch(err => console.log(err));
 
 //Create localhost:3000
-app.listen(3000);
+app.listen(process.env.PORT || 5000);
 
 //GET queue
 app.get('/api/queue',async(req,res)=>{
